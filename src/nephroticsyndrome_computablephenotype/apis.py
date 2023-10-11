@@ -36,17 +36,25 @@ All_encounters = Exclude_Encounter + Amyloidosis_Encounter + Diabetes1_Encounter
 @app.post("/classification")
 async def upload_file(file: UploadFile):
     """
-    Classify patients and return inclusion encounters.
+    
+    **Classify patients and return inclusion encounters:**
 
     This endpoint receives patient data in either JSON or CSV format, applies computable phenotype,
     and returns a list of inclusion encounters.
 
-    :param data_file: Patient data in JSON or CSV format.
+    **Parameters:**
+    :param file: Patient data in JSON or CSV format.
     
+    **Sample input data:**
     Sample input data (CSV and JSON) can be found in the GitHub repository under the 'input_test_data' folder:
+    [Link to GitHub Repository](https://github.com/kgrid-lab/nephroticsyndrome-computablephenotype/tree/main/input_test_data)
+
+    **Implementation:** 
+    The implementation of this app is available on GitHub:
     [Link to GitHub Repository](https://github.com/kgrid-lab/nephroticsyndrome-computablephenotype)
 
-    :return: List of inclusion encounters that meet the criteria.
+    **Returns:**
+    List of inclusion encounters that meet the criteria.
     """
     content = await file.read()
     
