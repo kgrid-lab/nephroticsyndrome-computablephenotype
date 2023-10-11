@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "nephroticsyndrome-computablephenotype"
+version = "0.1.0"
+description = ""
+authors = ["Farid Seifi <faridsei@med.umich.edu>"]
+readme = "README.md"
+packages = [{include = "nephroticsyndrome_computablephenotype", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.97.0"
+
+
+#[tool.poetry.group.dev.dependencies]
+uvicorn = "^0.22.0"
+python-multipart = "^0.0.6"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+

@@ -1,0 +1,65 @@
+[
+    {
+    "patId":"1",
+    "age":43,
+    "encounterList":[
+        {
+            "encounterId":"1",
+            "admitDate":"3/23/2017",
+            "encType":"IP",
+            "rawEncType":"IP",
+            "dischargeDate":"3/27/2013",
+            "additionalInfo":{},
+            "diagnosisList":[
+                {
+                    "diagnosisId":"1",
+                    "dx":"581.3",
+                    "edxType":"09",
+                    "dxSource":"FI"                    
+                },
+                {
+                    "diagnosisId":"2",
+                    "dx":"250.43",
+                    "edxType":"09",
+                    "dxSource":"FI"                    
+                }
+            ]
+
+        },
+        {
+            "encounterId":"2",
+            "admitDate":"5/12/2017",
+            "encType":"IP",
+            "rawEncType":"IP",
+            "dischargeDate":"5/13/2017",
+            "additionalInfo":{},
+            "diagnosisList":[
+                {
+                    "diagnosisId":"3",
+                    "dx":"N04.0",
+                    "edxType":"10",
+                    "dxSource":"FI"                    
+                }
+            ]
+
+        },
+        {
+            "encounterId":"3",
+            "admitDate":"1/2/2018",
+            "encType":"IP",
+            "rawEncType":"IP",
+            "dischargeDate":"1/3/2018",
+            "additionalInfo":{},
+            "diagnosisList":[
+                {
+                    "diagnosisId":"4",
+                    "dx":"582.1",
+                    "edxType":"09",
+                    "dxSource":"FI"                    
+                }
+            ]
+
+        }
+    ]
+}
+]
