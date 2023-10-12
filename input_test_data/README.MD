@@ -1,0 +1,1 @@
+Both sample input files have 4 patients. Patients with patId 1 and 2 are final inclusions and the other two are final exclusions.

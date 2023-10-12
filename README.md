@@ -1,4 +1,4 @@
-# Nephrotuc syndrom computable phenotype
+# Nephrotic syndrome  computable phenotype
 
 ## Motivation
 ???
@@ -14,7 +14,8 @@ ICD codes | 583.89, 582.89, 583, V08, 42, 42.1, 42.2, 42.8, 42.9, 70.2, 70.21, 7
 1. Sort patient encounters
 2. Process encounters in Chronological order
 
-    2.1 Flag current encounter for different conditions based on it’s diagnosis
+    2.1 Flag current encounter for different conditions based on it’s diagnoses. Each encounter may have multiple diagnoses and each condition listed below may get flagged for multiple diagnoses but the flag is going to be either 0 (for no diagnosis) or 1 (for one or more diagnoses) in that category.
+
     $${\color{red}NEPH5829_Encounter}$$
     $${\color{red}NEPH5829_Encounter}$$
     $${\color{red}NEPH5832_Encounter}$$
@@ -27,7 +28,7 @@ ICD codes | 583.89, 582.89, 583, V08, 42, 42.1, 42.2, 42.8, 42.9, 70.2, 70.21, 7
     $${\color{lightgreen}NSNOS_Encounter}$$
     $${\color{darkred}Exclude_Encounter}$$
 
-    2.2 Update running total for flags using previous encounters and the current one 
+    2.2 Update running total for flags using previous encounters and the current one. If a condition was flagged in previous step, this step adds 1 to the running total for that condition. 
     $${\color{red}NEPH5829_Total}$$
     $${\color{red}NEPH5832_Total}$$
     $${\color{red}NEPH5820_Total}$$
@@ -54,7 +55,7 @@ ICD codes | 583.89, 582.89, 583, V08, 42, 42.1, 42.2, 42.8, 42.9, 70.2, 70.21, 7
     
     2.4. Flag this encounter as "final inclusion" if it is flagged as a "possible inclusion" and is not flagged as a "possible exclusion". 
     
-    2.5 If current encounter is flagged as a "final inclusion" then include this patient and this encounter in inclusion list and stop the process. Otherwise if there are more encounters to process, continue with next encounter. If not flagged as final inclusion and this is the last encounter, stop the processing.
+    2.5 If current encounter is flagged as a "final inclusion" then include this patient and this encounter in inclusion list and stop process next encounters for this patient. Otherwise, if there are more encounters to process, continue with next encounter. If this encounter is not flagged as final inclusion and this is the last encounter, stop the processing for this patient.
 
 
 ## Flowchart 
@@ -64,12 +65,12 @@ graph TD
     Input[("Input data <br>(Patients <br>[Encounters <br>[Diagnoses]])")] --> B
     B --> |Yes| C(Take next patient)
     C --> D(Sort patient encounters <br>in chronological order )
-    D --> E{Unporocessed <br>encounters?}
+    D --> E{Unprocessed <br>encounters?}
     E --> |Yes| F(Take next encounter )
-    F --> G("Flag current encounter for different <br>conditions based on it’s diagnosis")
-    G --> H(Update running total of flaged <br>conditions for processed encounters)
-    H --> I{Is current encounter <br>an inclusison and not <br>an exclusion?}
-    I --> |Yes| J(Include patient and current <br>encounter to final results )
+    F --> G("Flag current encounter (0 or 1) for different <br>conditions based on it’s diagnoses")
+    G --> H(Update running total of flagged <br>conditions for processed encounters)
+    H --> I{Is current encounter <br>an inclusion and not <br>an exclusion?}
+    I --> |Yes| J(Include patient and current <br>encounter to final inclusion results )
     I --> |No| E
     J --> B
     E --> |No| B
@@ -77,7 +78,7 @@ graph TD
 ```
 
 ## Implementation
-The algorithm is implemented as a function and is used by two apis that receive data in either json format or as a csv file and process it and return results as HTTP response.
+The algorithm is implemented as a function and is used by two APIs that receive data in either Json format or as a csv file and process it and return results as HTTP response.
 
 ## How to run and test 
 Install the app either by running 
@@ -91,8 +92,8 @@ Then, run the app using
 uvicorn src.nephroticsyndrome_computablephenotype.apis:app --reload
 ```
 
-Then you can access fastapi documentation at http://127.0.0.1:8000 to test apis
+Then you can access fastapi documentation at http://127.0.0.1:8000 to test APIs
 
-Use the content of "sample input.txt" for testing the api that consumes data in  json format.
+Use the content of "sample input.txt" for testing the API that consumes data in  Json format.
 
-Use the input.csv file to test the api that receives a csv file.
+Use the input.csv file to test the API that receives a csv file.

@@ -4,8 +4,8 @@ from typing import List
 class Diagnosis(BaseModel):
     diagnosisId: str 
     dx: str
-    edxType: str
-    dxSource: str
+    #edxType: str
+    #dxSource: str
 
 
 class AdditionalInfo(BaseModel):
@@ -26,8 +26,8 @@ class AdditionalInfo(BaseModel):
 class Encounter(BaseModel):
     encounterId: str 
     admitDate: str
-    encType: str
-    rawEncType: str
+    #encType: str
+    #rawEncType: str
     dischargeDate:str
     diagnosisList:List[Diagnosis]
     additionalInfo:AdditionalInfo

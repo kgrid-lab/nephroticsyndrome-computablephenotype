@@ -62,11 +62,8 @@ async def upload_file(file: UploadFile):
         patientList=prepare_data_from_csv(content)
         return process_patient_list(patientList)
     elif is_json(content):
-        data = json.loads(content)
-        print(data)
-        patientList = [Patient(**item) for item in data]
-
-        print(patientList)
+        data = json.loads(content)        
+        patientList = [Patient(**item) for item in data]        
         return process_patient_list(patientList)
     else:
         return "Input data must be json or csv"
@@ -106,7 +103,7 @@ def prepare_data_from_csv(csv_content)-> list[Patient]:
     # Process the CSV data and append rows to the JSON variable
     for row in csv.reader(csv_text.splitlines()):
         numInput+=1
-        if row[5] in All_encounters:    
+        if row[4] in All_encounters:    
             numDiagnosis+=1
             data.append(row)
 
@@ -130,13 +127,13 @@ def prepare_data_from_csv(csv_content)-> list[Patient]:
         
         #if encounter does not exist in patient add it otherwise find it    
         if len([obj for obj in patient.encounterList if obj.encounterId == row[2]])==0:
-            encounter= Encounter(encounterId=row[2],admitDate=row[4],encType=row[3],rawEncType=row[3],dischargeDate=row[4],diagnosisList=[], additionalInfo=AdditionalInfo())            
+            encounter= Encounter(encounterId=row[2],admitDate=row[3],dischargeDate=row[3],diagnosisList=[], additionalInfo=AdditionalInfo())            
             patient.encounterList.append(encounter)
         else:
             encounter = [obj for obj in patient.encounterList if obj.encounterId == row[2]][0]
 
         #add diagnosis to the right patient and encounter
-        diagnosis= Diagnosis(diagnosisId="",dx=row[5],edxType="",dxSource="")            
+        diagnosis= Diagnosis(diagnosisId="",dx=row[4])            
         encounter.diagnosisList.append(diagnosis)
             
     return patientList
@@ -198,7 +195,7 @@ def process_patient_list(patientList) -> {}:
                 final_result.append(result)
                 break
           
-    return {"num patients":len(final_result),"patients":final_result}
+    return {"num of inclusion patients":len(final_result),"inclusion patients":final_result}
 
 #only runs virtual server when running this .py file directly for debugging
 if __name__ == "__main__":
