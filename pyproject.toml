@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nephroticsyndrome-computablephenotype"
-version = "0.1.0"
+version = "1.0.0"
 description = ""
 authors = ["Farid Seifi <faridsei@med.umich.edu>"]
 readme = "README.md"

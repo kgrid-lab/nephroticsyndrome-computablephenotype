@@ -1,7 +1,21 @@
 # Nephrotic syndrome  computable phenotype
 
 ## Motivation
-???
+Computable phenotypes are algorithms derived from electronic health record (EHR) data that 
+classify patients based on the presence or absence of diseases, conditions, or clinical features. 
+Computable phenotypes have a wide variety of use cases, including cohort identification for 
+clinical trials and observational studies. Phenotyping also plays a role in the collection and 
+reporting of real world data to support both clinical investigations and post-market drug or 
+device surveillance.
+
+Despite the importance of computable phenotypes to research, patient care, and population 
+health, there are no standards for sharing phenotypes, or even for making critical information 
+about a phenotype transparent, e.g. in a research publication. This lack of transparency and 
+reusability has many serious implications for research and patient care. We study the 
+characteristics that make computable phenotypes transparent (such that the impact of feature 
+selection decisions can be made explicit), reproducible (such that phenotypes can be used in 
+different contexts with similar results), and reusable (such that elements of a phenotype can be 
+adapted for use in different contexts or applications).
 
 ## Reference data
 
@@ -10,7 +24,7 @@ Inclusions and exclusions conditions| $${\color{darkred}Exclude_Encounter}$$ | $
 ICD codes | 583.89, 582.89, 583, V08, 42, 42.1, 42.2, 42.8, 42.9, 70.2, 70.21, 70.22, 70.23, 70.3, 70.31, 70.32, 70.33, 70.41, 70.44, 70.51, 70.54, 70.7, 70.71, 287, 580, 580.4, 593.73, 741.9, 741, 596.54, 277.87, 593.73, 593.7, N05.1, N06.1, N07.1, N03.8, N05.9, Z21, B20, B16.2, B191.1, B160, B18.1, B180, B16.9, B191.0, B161, B18.1, B18.0, B17.11, B18.2, B17.10, B18.2, B19.20, B192.1, D69.0, N00.3, N01.3, N13.729, Q05.8, Q05.4, N31.9, E884.0, E884.1, E884.2, E884.9, H49819, N13.729, N13.70 | 277.39, 277.3, 277.3, E85.1, E853, E858 | E102.9, 250.41, 250.43 | 250.4, 250.43, E08.21, E08.22, E112.9 | M32.10, 710, 710 | 582, N03.2 | N03.9, 582.9 | 583.2, N05.5 | N04.9, 581.9 | 581.1, 581.3, 582.1, 583.1, N02.2, N04.0, N03.3, N05.2
 
 
-## Algorithm to process one patient
+## Core knowledge used to classifiy patients
 1. Sort patient encounters
 2. Process encounters in Chronological order
 
@@ -78,22 +92,26 @@ graph TD
 ```
 
 ## Implementation
-The algorithm is implemented as a function and is used by two APIs that receive data in either Json format or as a csv file and process it and return results as HTTP response.
+The algorithm is implemented as a function and is used by an API that receive data in either Json format or as a csv file and process it and return results as HTTP response.
 
-## How to run and test 
-Install the app either by running 
+## Try it out
+Use the followin link to access this app which is deployed on Herolu: https://nephroticsyndrome-computableph-07c73f0fb31d.herokuapp.com/
+
+ You will see the OpenAPI documentation, click on the "/classification" endpoint and then "Try it out" and follow the instruction to upload and execute the API. Use the test files in the input_test_data folder for testing the API.
+
+## How to install, run and test the app
+Install the app from the code by running running 
 ```
 poetry install 
 ```
-or by installing from a distribution file.
+or install it from a distribution file.
 
 Then, run the app using 
 ```
 uvicorn src.nephroticsyndrome_computablephenotype.apis:app --reload
 ```
 
-Then you can access fastapi documentation at http://127.0.0.1:8000 to test APIs
+Then you can access fastapi documentation at http://127.0.0.1:8000 to test the API
 
-Use the content of "sample input.txt" for testing the API that consumes data in  Json format.
+Use the test files in the input_test_data folder for testing the API.
 
-Use the input.csv file to test the API that receives a csv file.

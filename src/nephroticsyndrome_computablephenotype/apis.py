@@ -6,8 +6,17 @@ from fastapi import FastAPI, Request, UploadFile
 from fastapi.responses import RedirectResponse
 from .datatypes import Patient, Encounter, Diagnosis, AdditionalInfo,Result
 from typing import List
+from fastapi.openapi.models import Info
 
-app = FastAPI()
+app = FastAPI(
+    title="Computable Phenotype",
+    description="Computable phenotypes are algorithms derived from electronic health record (EHR) data that classify patients based on the presence or absence of diseases, conditions, or clinical features. Computable phenotypes have a wide variety of use cases, including cohort identification for clinical trials and observational studies. Phenotyping also plays a role in the collection and reporting of real world data to support both clinical investigations and post-market drug or device surveillance",
+    version="1.0.0",
+    contact={
+        "name": "kgrid developers",
+        "url": "https://kgrid.org/",
+        "email": "kgrid-developers@umich.edu",
+    })
 
 @app.get(
     "/",
@@ -33,14 +42,14 @@ NSNOS_Encounter=['N04.9','581.9']
 PrimaryNS_Encounter=['581.1','581.3','582.1','583.1','N02.2','N04.0','N03.3','N05.2']
 All_encounters = Exclude_Encounter + Amyloidosis_Encounter + Diabetes1_Encounter + Diabetes2_Encounter + Lupus_Encounter + Neph5820_Encounter + Neph5829_Encounter + Neph5832_Encounter + NSNOS_Encounter + PrimaryNS_Encounter
 
-@app.post("/classification")
+@app.post("/classification", tags=["Nephrotic Syndrome Computable Phenotype"])
 async def upload_file(file: UploadFile):
     """
     
     **Classify patients and return inclusion encounters:**
 
-    This endpoint receives patient data in either JSON or CSV format, applies computable phenotype,
-    and returns a list of inclusion encounters.
+    This api could be used to process multiple patients data, including their encounters and diagnoses and to classify them for Nephrotic Syndrome. It receives patient data in either JSON or CSV format, applies computable phenotype,
+    and returns a list of inclusion encounters.  For more detail on the implementation and input data format please check our GitHub repository.
 
     **Parameters:**
     :param file: Patient data in JSON or CSV format.
