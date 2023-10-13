@@ -1,4 +1,4 @@
-# Nephrotic syndrome  computable phenotype
+# Nephrotic syndrome computable phenotype
 
 ## Motivation
 Computable phenotypes are algorithms derived from electronic health record (EHR) data that 
@@ -95,23 +95,36 @@ graph TD
 The algorithm is implemented as a function and is used by an API that receive data in either Json format or as a csv file and process it and return results as HTTP response.
 
 ## Try it out
-Use the followin link to access this app which is deployed on Herolu: https://nephroticsyndrome-computableph-07c73f0fb31d.herokuapp.com/
+Use the following link to access this app which is deployed on Heroku: https://nephroticsyndrome-computableph-07c73f0fb31d.herokuapp.com/
 
- You will see the OpenAPI documentation, click on the "/classification" endpoint and then "Try it out" and follow the instruction to upload and execute the API. Use the test files in the input_test_data folder for testing the API.
+ You will see the Open API documentation, click on the "/classification" endpoint and then "Try it out" and follow the instruction to upload and execute the API. Use the test files in the input_test_data folder for testing the API.
 
 ## How to install, run and test the app
-Install the app from the code by running running 
+
+### Install and run the app from the code 
+Clone the repository using
+```
+git clone https://github.com/kgrid-lab/nephroticsyndrome-computablephenotype.git
+```
+Run the following command from the root of the cloned repository
 ```
 poetry install 
 ```
-or install it from a distribution file.
 
 Then, run the app using 
 ```
 uvicorn src.nephroticsyndrome_computablephenotype.apis:app --reload
 ```
 
-Then you can access fastapi documentation at http://127.0.0.1:8000 to test the API
+### Install and run the app from a distribution file
+Install the app using a distribution file
+```
+pip install https://github.com/kgrid-lab/nephroticsyndrome-computablephenotype/releases/download/1.0.0/nephroticsyndrome_computablephenotype-1.0.0-py3-none-any.whl
+```
+Then, run the app using 
+```
+uvicorn nephroticsyndrome_computablephenotype.apis:app --reload
+```
 
-Use the test files in the input_test_data folder for testing the API.
+Once the app is running, you can access fastapi documentation at http://127.0.0.1:8000 to test the API. Use the test files in the input_test_data folder for testing the API.
 
