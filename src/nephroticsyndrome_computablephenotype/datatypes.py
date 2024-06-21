@@ -1,4 +1,4 @@
-from pydantic import BaseModel,Field
+from pydantic import BaseModel
 from typing import List
 
 class Diagnosis(BaseModel):
@@ -44,6 +44,16 @@ class Result:
     Anchor_Admit_Date: str
     Anchor_Discharge_Date: str
     age: int
+    
+    def to_dict(self):
+        return {
+            'patId': self.patId,
+            'age': self.age,
+            'Anchor_Admit_Date': self.Anchor_Admit_Date,
+            "Anchor_Discharge_Date": self.Anchor_Discharge_Date,
+            "Anchor_EncounterID": self.Anchor_EncounterID
+            
+        }
 
 
 
