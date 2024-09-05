@@ -33,16 +33,9 @@
           "implementedBy" : "cli.py"
         },
         {
-          "@type":"API",
+          "@type":["API","stand alone","python" ],
           "dependsOn":"NephroticSyndromeCP",
-          "implementedBy" : [{
-            "@id": "api.py",
-            "@type":[
-                "stand alone",
-                "python"            
-              ]
-          }]
-    
+          "implementedBy" : "api.py"    
         }
       ],
       "koio:hasKnowledge":{
