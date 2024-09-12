@@ -23,7 +23,7 @@
     "dc:type" : "software",
     "dc:license" : ""
     
-    "koio:hasService":[
+    "koio:hasService" :
         {
           "@type":["cli","batch","python"],
           "dependsOn":"NephroticSyndromeCP",
@@ -47,7 +47,7 @@
         "dc:creator" : "Dorn, Chad",
         "dc:description" : "An SQL classification algorithm that creates a cohort of patients with primary nephrotic syndrome from structured data modeled on the PCORI Common Data Model", 
         "dc:subject": "https://www-ncbi-nlm-nih-gov/mesh/68009404",
-        "dc:relation": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8986057",
+        "dc:relation": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8986057"
        
       }
     }
