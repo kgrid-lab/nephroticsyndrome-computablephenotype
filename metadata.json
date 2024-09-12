@@ -1,32 +1,29 @@
 {
     "@context": {
-      "dc": "http://purl.org/dc/elements/1.1/",
-      "koio": "http://kgrid.org/koio#",
-      "swo": "http://www.ebi.ac.uk/swo/",    
-      "implementedBy": "swo:SWO_0000085",
-      "API": "swo:interface/SWO_9000054",
-      "cli": "swo:interface/SWO_9000053",
-      "python": "swo:SWO_0000118",
-      "javascript": "swo:SWO_0000108",
-      "dependsOn": "http://purl.obolibrary.org/obo/RO_0002502",
-      "batch": "https://spec.pistoiaalliance.org/idmp/ontology/ISO/ISO11615-MedicinalProducts/Batch",
-      "function": "http://purl.obolibrary.org/obo/BFO_0000034",
+      "koio": "https://kgrid.org/koio/2.0/context",
+      "dc": "http://purl.org/dc/terms/",
+    
       "hasServiceSpecification": {
         "@id": "koio:hasServiceSpcification",
         "@type": "@id"
-      }
     },   
-      "@id":"NSCP",
-      "koio:kgrid":"2",
-      "@type" : "koio:KnowledgeObject",
-      "dc:title" : "Nephrotic Syndrome Computable Phenotype",
-      "dc:identifier" : "ark:NSCP",
-      "version" : "v1.0",
-      "dc:description" : "Classify patients and return inclusion encounters for nephrotic syndrome",
-      "citation": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8986057/",
-      "koio:contributors" : "Kgrid Team",
-      "koio:keywords" : [ "nephrotic syndrome", "computable phenotype" ],
-      "koio:hasService":[
+  
+    "@id":"NSCP",
+    "koio:kgrid":"2",
+    "@type" : "koio:KnowledgeObject",
+    "dc:title" : "Nephrotic Syndrome Computable Phenotype",
+    "dc:identifier" : "ark:NSCP",
+    "dc:version" : "v1.0",
+    "dc:date" : "2024-09",
+    "dc:description" : "An algorithm to screen structured patient data and return inclusion encounters for nephrotic syndrome",
+    "dc:creator" : "Seifi, Farid",
+    "dc:contributor" : "https://orcid.org/0000-0001-7377-163X",
+    "dc:publisher" : ["Knowledge Systems Lab"],
+    "dc:subject": ["primary nephrotic syndrome", "computable phenotype"],
+    "dc:type" : "software",
+    "dc:license" : ""
+    
+    "koio:hasService":[
         {
           "@type":["cli","batch","python"],
           "dependsOn":"NephroticSyndromeCP",
@@ -37,17 +34,31 @@
           "dependsOn":"NephroticSyndromeCP",
           "implementedBy" : [{
             "@id": "api.py",
-            "@type":[
-                "stand alone",
-                "python"            
-              ]
+            "@type":["stand alone", "python"]
           }]
-    
         }
       ],
       "koio:hasKnowledge":{
         "@id":"NephroticSyndromeCP",
         "@type":"function",
-        "implementedBy" : ["classification_algorithm.py"]
+        "implementedBy" : ["classification_algorithm.py"],
+        "dc:source":"https://github.com/AoliverioUM/nephroticsyndrome-computablephenotype/blob/main/Nephrotic_Syndrome_1_Patients_2018_0411.sql",
+        "dc:date" : "2018-04-11",
+        "dc:creator" : "Dorn, Chad",
+        "dc:description" : "An SQL classification algorithm that creates a cohort of patients with primary nephrotic syndrome from structured data modeled on the PCORI Common Data Model", 
+        "dc:subject": "https://www-ncbi-nlm-nih-gov/mesh/68009404",
+        "dc:relation": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8986057",
+       
       }
     }
+
+
+    ID and add terms for tests, examples, etc and think of how this would show up in metadata for a KO
+
+    also  "purpose",
+    "funder",
+    "network",
+
+    References is something referenced by the resource - in this case the paper references the GH repo but not the other way around 
+    Lastname, Firstname is the appropriate syntax 
+    What do we mean by @id and implemented by wrt cp?
