@@ -1,43 +1,39 @@
 {
-    "@context": {
-      "koio": "https://kgrid.org/koio/2.0/context",
-      "dc": "http://purl.org/dc/terms/",
-    
-      "hasServiceSpecification": {
-        "@id": "koio:hasServiceSpcification",
-        "@type": "@id"
-    },   
-  
+    "@context": "https://kgrid.org/koio/2.0/context",
+    "@type":"koio:KnowledgeObject",
     "@id":"NSCP",
     "koio:kgrid":"2",
-    "@type" : "koio:KnowledgeObject",
     "dc:title" : "Nephrotic Syndrome Computable Phenotype",
-    "dc:identifier" : "ark:NSCP",
+    "dc:identifier" : "ark:NSCP.needsToBeCreated",
     "dc:version" : "v1.0",
     "dc:date" : "2024-09",
     "dc:description" : "An algorithm to screen structured patient data and return inclusion encounters for nephrotic syndrome",
     "dc:creator" : "Seifi, Farid",
     "dc:contributor" : "https://orcid.org/0000-0001-7377-163X",
-    "dc:publisher" : ["Knowledge Systems Lab"],
+    "dc:publisher" : ["Knowledge Systems Lab" , "https://knowledge-systems.lab.medicine.umich.edu/"],
     "dc:subject": ["primary nephrotic syndrome", "computable phenotype"],
     "dc:type" : "software",
-    "dc:license" : ""
+    "dc:license" : "license.md"
     
-    "koio:hasService" :
-        {
-          "@type":["cli","batch","python"],
-          "dependsOn":"NephroticSyndromeCP",
-          "implementedBy" : "cli.py"
+    "koio:hasService": [
+      {
+        "@type":["cli","batch","python"],
+        "hasServiceSpecification": {
+        "@id": "koio:hasServiceSpecification",
+        "@type": "@id",  
+        "dependsOn":"NephroticSyndromeCP",
+        "implementedBy" : "cli.py"
         },
-        {
-          "@type":"API",
-          "dependsOn":"NephroticSyndromeCP",
-          "implementedBy" : [{
-            "@id": "api.py",
-            "@type":["stand alone", "python"]
-          }]
+    {
+        "@type":"API",
+        "hasServiceSpecification":"API_service_js/service.yaml",
+        "dependsOn":"NephroticSyndromeCP",
+        "implementedBy" : {
+          "@id": "apis.py",
+          "@type":["stand alone", "python"]
+          },
         }
-      ],
+
       "koio:hasKnowledge":{
         "@id":"NephroticSyndromeCP",
         "@type":"function",
@@ -52,13 +48,15 @@
       }
     }
 
-
+--------------------------
     ID and add terms for tests, examples, etc and think of how this would show up in metadata for a KO
 
     also  "purpose",
-    "funder",
+    "funder", - schema
     "network",
+    "tests" - https://www.w3.org/TR/test-metadata/
 
     References is something referenced by the resource - in this case the paper references the GH repo but not the other way around 
     Lastname, Firstname is the appropriate syntax 
     What do we mean by @id and implemented by wrt cp?
+    Which license? Implications for original knowledge?
