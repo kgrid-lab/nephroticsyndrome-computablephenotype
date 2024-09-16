@@ -11,37 +11,42 @@
     "dc:creator" : "Seifi, Farid",
     "dc:contributor" : "https://orcid.org/0000-0001-7377-163X",
     "dc:publisher" : ["Knowledge Systems Lab" , "https://knowledge-systems.lab.medicine.umich.edu/"],
-    "dc:subject": ["primary nephrotic syndrome", "computable phenotype"],
     "dc:type" : "software",
-    "dc:license" : "license.md"
+    "dc:license" : "license.md",
     
-    "koio:hasService": [
+    "koio:hasService": 
+    [
       {
-        "@type":["cli","batch","python"],
-        "hasServiceSpecification": {
-        "@id": "koio:hasServiceSpecification",
-        "@type": "@id",  
-        "dependsOn":"NephroticSyndromeCP",
-        "implementedBy" : "cli.py"
-        },
-    {
-        "@type":"API",
-        "hasServiceSpecification":"API_service_js/service.yaml",
+        "@type":["service" , "cli", "batch","python", "inTestingNow"],
         "dependsOn":"NephroticSyndromeCP",
         "implementedBy" : {
-          "@id": "apis.py",
-          "@type":["stand alone", "python"]
-          },
+          "@id": "cli.py",
+          "@type": ["batch", "python"]
         }
+      },
+  
+    {
+        "@type": ["service", "API", "inTestingNow"],
+        "dependsOn":"NephroticSyndromeCP",
+        "implementedBy" : {
+          "@id": "api.py",
+          "@type":["stand alone", "python"]
+          }
+        
+    }],
 
       "koio:hasKnowledge":{
         "@id":"NephroticSyndromeCP",
-        "@type":"function",
-        "implementedBy" : ["classification_algorithm.py"],
+        "@type":"knowledge",
+        "implementedBy" : {
+          "@id": "classification_algorithm.py",
+          "@type": "function"
+        },
         "dc:source":"https://github.com/AoliverioUM/nephroticsyndrome-computablephenotype/blob/main/Nephrotic_Syndrome_1_Patients_2018_0411.sql",
         "dc:date" : "2018-04-11",
         "dc:creator" : "Dorn, Chad",
         "dc:description" : "An SQL classification algorithm that creates a cohort of patients with primary nephrotic syndrome from structured data modeled on the PCORI Common Data Model", 
+        "dc:subject": ["primary nephrotic syndrome", "computable phenotype"],
         "dc:subject": "https://www-ncbi-nlm-nih-gov/mesh/68009404",
         "dc:relation": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8986057"
        
@@ -58,5 +63,7 @@
 
     References is something referenced by the resource - in this case the paper references the GH repo but not the other way around 
     Lastname, Firstname is the appropriate syntax 
-    What do we mean by @id and implemented by wrt cp?
     Which license? Implications for original knowledge?
+    Look at nested properties/values for creator/publisher (note line 13)
+    Add "API_service_js/service.yaml" to repo
+    Typology for CBK
