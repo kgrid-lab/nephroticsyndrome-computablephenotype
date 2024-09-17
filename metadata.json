@@ -34,11 +34,11 @@
     "koio:hasService": 
     [
       {
-        "@type":["service" , "cli", "batch","python", "inTestingNow"],
+        "@type":["service","CLI","batch","Python","inTestingNow"],
         "dependsOn":"NephroticSyndromeCP",
         "implementedBy" : {
           "@id": "cli.py",
-          "@type": ["batch", "python"]
+          "@type": ["batch", "Python"]
         }
       },
   
@@ -47,7 +47,7 @@
         "dependsOn":"NephroticSyndromeCP",
         "implementedBy" : {
           "@id": "api.py",
-          "@type":["stand alone", "python"]
+          "@type":["stand alone", "Python"]
           }
         
     }],
