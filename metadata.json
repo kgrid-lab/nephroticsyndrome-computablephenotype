@@ -1,10 +1,12 @@
 {
-    "@context": {
-      "koio": "https://kgrid.org/koio/2.0/context",
+    "@context": [
+      "https://kgrid.org/koio/2.0/context",
+      {
       "dc": "https://purl.org/dc/terms/",
       "schema": "https://schema.org",
       "foaf": "https://xmlns.com/foaf/spec/"
-    },
+    }
+  ],
     "@type":"koio:KnowledgeObject",
     "@id":"NSCP",
     "koio:kgrid":"2",
