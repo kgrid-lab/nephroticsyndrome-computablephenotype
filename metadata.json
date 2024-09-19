@@ -3,8 +3,7 @@
       "https://kgrid.org/koio/2.0/context",
       {
       "dc": "https://purl.org/dc/terms/",
-      "schema": "https://schema.org",
-      "foaf": "https://xmlns.com/foaf/spec/"
+      "schema": "https://schema.org/",
     }
   ],
     "@type":"koio:KnowledgeObject",
@@ -15,14 +14,20 @@
     "dc:version" : "v1.0",
     "dc:date" : "2024-09",
     "dc:description" : "An algorithm to screen structured patient data and return inclusion encounters for nephrotic syndrome",
-    "dc:creator" : {
-      "foaf:name": "Seifi, Farid",
+    
+    "schema:creator" : {
+      "@type": "Person",
+      "schema:familyName": "Seifi",
+      "schema:givenName": "Farid",
       "schema:affiliation": "Knowledge Systems Lab, University of Michigan Medical School",
       "schema:email": "faridsei@med.umich.edu"
     },
-    "dc:contributor": {
-      "foaf:name": "Conte, Marisa",
-      "dc:identifier": "https://orcid.org/0000-0001-7377-163X",
+
+    "schema:contributor": {
+      "@id": "https://orcid.org/0000-0001-7377-163X",
+      "@type": "Person",
+      "schema:familyName": "Conte",
+      "schema:givenName": "Marisa",
       "schema:affiliation": "Knowledge Systems Lab, University of Michigan Medical School",
       "schema:email": "meese@umich.edu"
     },
@@ -34,36 +39,38 @@
     "koio:hasService": 
     [
       {
-        "@type":["service","CLI","batch","Python","inTestingNow"],
+        "@type":["Service","CLI"],
         "dependsOn":"NephroticSyndromeCP",
         "implementedBy" : {
           "@id": "cli.py",
-          "@type": ["batch", "Python"]
+          "@type": ["Batch","Python"]
         }
       },
   
     {
-        "@type": ["service", "API", "inTestingNow"],
+        "@type": ["Service","API"],
         "dependsOn":"NephroticSyndromeCP",
         "implementedBy" : {
           "@id": "api.py",
-          "@type":["stand alone", "Python"]
+          "@type":["API","Python"]
           }
         
     }],
 
       "koio:hasKnowledge":{
         "@id":"NephroticSyndromeCP",
-        "@type":"knowledge",
+        "@type":"Knowledge",
         "implementedBy" : {
           "@id": "classification_algorithm.py",
-          "@type": "function"
+          "@type": "Function"
         },
         "dc:source":"https://github.com/AoliverioUM/nephroticsyndrome-computablephenotype/blob/main/Nephrotic_Syndrome_1_Patients_2018_0411.sql",
         "dc:format": "application/sql",
         "dc:date" : "2018-04-11",
-        "dc:creator" : {
-          "foaf:name": "Dorn, Chad",
+        "schema:creator" : {
+          "@type":"Person",
+          "schema:lastname": "Dorn",
+          "schema:givenName": "Chad"
           "schema:affiliation": "Vanderbilt University Medical Center",
           "schema:email": "chad.a.dorn@vumc.org"
         },
@@ -85,3 +92,10 @@
     Typology for CBK
 
     Add: ICD-9, PCOR CDM versions
+
+    cutting nested dc for now
+    "dc:creator" : {
+      "foaf:name": "Seifi, Farid",
+      "schema:affiliation": "Knowledge Systems Lab, University of Michigan Medical School",
+      "schema:email": "faridsei@med.umich.edu"
+    },
