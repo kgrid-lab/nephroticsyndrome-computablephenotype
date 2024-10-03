@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computable Artifact Metadata</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        h1 {
+            color: #333;
+        }
+        .metadata {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .metadata p {
+            margin: 5px 0;
+        }
+        .colab-button {
+            position: fixed; /* Stay fixed on screen */
+            top: 20px; /* Distance from top */
+            right: 20px; /* Distance from right */
+            background-color: #f9b233;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .colab-button:hover {
+            background-color: #f79a00; /* Change color on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="metadata" id="metadata">
+            <!-- Metadata will be loaded here dynamically -->
+        </div>
+        <a class="colab-button" href="https://colab.research.google.com/drive/1N2R8xdQfKSbWHkthCU5V2Fdm68cOVL6X#scrollTo=LmdWDjK_d2Uq" target="_blank">Open in Google Colab</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jsonld@1.5.0/dist/jsonld.min.js"></script>
+    <script>
+        // Fetch metadata from JSON file and display it on the page
+        fetch('https://raw.githubusercontent.com/kgrid-lab/nephroticsyndrome-computablephenotype/refs/heads/KO-implementation/metadata.json')
+        .then(response => response.json())
+        .then(async (metadata) => {
+            // Use jsonld.js to expand the metadata
+            const expanded = await jsonld.expand(metadata);
+            console.log('Expanded Metadata:', expanded[0]);
+            const metadataDiv = document.getElementById('metadata');
+            metadataDiv.innerHTML = `
+                <h1>${metadata["dc:title"]}</h1> 
+                ${metadata["dc:description"] }<br/><br/>
+
+                <!-- <p><strong>Id:</strong> ${expanded[0]["@id"]}</p> -->
+                <p><strong>Id:</strong> ${metadata["@id"]}</p>
+                <p><strong>Identifier:</strong>  ${metadata["dc:identifier"] }</p>
+
+                <p><strong>Type:</strong> <a href='${expanded[0]["@type"]}'> ${metadata["@type"] }</a></p>
+                <p><strong>Version:</strong>  ${metadata["version"] }</p>
+                <p><strong>KGrid model version:</strong> ${metadata["koio:kgrid"]}</p>
+                <p><strong>Citation:</strong> <a href='${metadata["citation"]}'>${metadata["citation"]}</a></p>
+                <p><strong>Contributors:</strong> ${metadata["koio:contributors"]}</p>
+                <p><strong>Keywords:</strong> ${metadata["koio:keywords"]}</p>
+
+                <h2> Services </h2>
+            `;
+
+            // Iterate over the services and add a section for each
+            const services = metadata["koio:hasService"];
+            services.forEach(service => {
+                let serviceHTML = `
+                    <p><strong>Type:</strong> ${service["@type"].join(', ')}</p>
+                    <p><strong>Depends on:</strong> ${service["dependsOn"]}</p>
+                    <p><strong>Implemented by:</strong> ${service["implementedBy"]}</p>
+                    <br/>
+                `;
+
+                // Append the service section to the metadataDiv
+                metadataDiv.innerHTML += serviceHTML;
+            });
+
+            const knowledge = metadata["koio:hasKnowledge"];
+            let knowledgeHTML = `
+                    <h2> Knowledge </h2>
+                    <p><strong>Id:</strong> ${knowledge["@id"]}</p>
+                    <p><strong>Type:</strong> ${knowledge["@type"]}</p>
+                    <p><strong>Implemented by:</strong> ${knowledge["implementedBy"].join(', ')}</p>
+                    <br/>
+                `;
+
+                // Append the service section to the metadataDiv
+                metadataDiv.innerHTML += knowledgeHTML;
+        })
+        .catch(error => console.error('Error fetching metadata:', error));
+    </script>
+</body>
+</html>

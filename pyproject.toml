@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "nephroticsyndrome-computablephenotype"
 version = "1.0.0"
-description = ""
+description = "Classify patients and return inclusion encounters for nephrotic syndrome"
 authors = ["Farid Seifi <faridsei@med.umich.edu>"]
 readme = "README.md"
 packages = [{include = "nephroticsyndrome_computablephenotype", from = "src"}]
@@ -14,6 +14,9 @@ fastapi = "^0.97.0"
 #[tool.poetry.group.dev.dependencies]
 uvicorn = "^0.22.0"
 python-multipart = "^0.0.6"
+
+[tool.poetry.scripts]
+nephroticsyndrome-computablephenotype = "nephroticsyndrome_computablephenotype.cli:main"
 
 [build-system]
 requires = ["poetry-core"]
