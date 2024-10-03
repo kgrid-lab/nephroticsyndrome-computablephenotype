@@ -8,7 +8,7 @@
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/src/nephroticsyndrome_computablephenotype/apis.py",
+            "program": "${workspaceFolder}/src/nephroticsyndrome_computablephenotype/api.py",
             "console": "integratedTerminal",
             "justMyCode": true
         }

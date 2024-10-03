@@ -92,7 +92,11 @@ graph TD
 ```
 
 ## Implementation
-The algorithm is implemented as a function and is used by an API that receive data in either Json format or as a csv file and process it and return results as HTTP response.
+The algorithm is implemented as a function and is packaged in a knowledge object that includes multiple services to execute it.  Services include
+- a stand alone web API: 
+    - an API that receives patients data in either Json or a csv file  
+    - an API that receives json formatted patients data as the body of the request
+- a Command Line Interface (CLI): that receives the patients data as a file 
 
 ## Try it out
 Use the following link to access this app which is deployed on Heroku: https://nephroticsyndrome-computableph-07c73f0fb31d.herokuapp.com/
@@ -103,27 +107,66 @@ Use the following link to access this app which is deployed on Heroku: https://n
 
 ### Install and run the app from the code 
 Clone the repository using
-```
+```zsh
 git clone https://github.com/kgrid-lab/nephroticsyndrome-computablephenotype.git
 ```
-Run the following command from the root of the cloned repository
-```
+Install the dependencies and the project
+```zsh
 poetry install 
 ```
 
-Then, run the app using 
+#### API service
+Run the API service using 
+```zsh
+uvicorn src.nephroticsyndrome_computablephenotype.api:app --reload
 ```
-uvicorn src.nephroticsyndrome_computablephenotype.apis:app --reload
+
+#### CLI service
+Use one of the following approaches to configure and run the CLI:
+1. Run the script directly using Python's module option
+```zsh
+python -m nephroticsyndrome_computablephenotype.cli input_test_data/sample_input.json
+```
+
+2. Make the script executable and run directly
+```
+# Make the script executable on Unix/Linux/macOS:
+chmod +x src/nephroticsyndrome_computablephenotype/cli.py 
+# Run directly
+./src/nephroticsyndrome_computablephenotype/cli.py input_test_data/sample_input.json
+```
+
+3. Configure and use it as a command named ***classify*** anywhere from the command line:
+
+Create a symbolic link to cli.py in a directory that is already on your PATH (e.g., /usr/local/bin/) using
+
+```zsh
+# On Unix/Linux/macOS:
+ln -s /path/to/cli.py /usr/local/bin/classify
+```
+Note that `/usr/local/bin/` is usually in your PATH. The specific location where you should link your script might vary.
+
+Alternatively You can add an alias in your shell configuration file (like .bashrc or .zshrc):
+
+```zsh
+alias classify='/path/to/cli.py'
+```
+After adding the alias, you may need to reload the shell configuration using source ~/.bashrc or restart your terminal.
+
+call using 
+```zsh
+# pipe input file to the classify command and redirect the processed output to output.json
+cat input_test_data/sample_input.json | classify > ouput.json
 ```
 
 ### Install and run the app from a distribution file
 Install the app using a distribution file
-```
+```zsh
 pip install https://github.com/kgrid-lab/nephroticsyndrome-computablephenotype/releases/download/1.0.0/nephroticsyndrome_computablephenotype-1.0.0-py3-none-any.whl
 ```
 Then, run the app using 
-```
-uvicorn nephroticsyndrome_computablephenotype.apis:app --reload
+```zsh
+uvicorn nephroticsyndrome_computablephenotype.api:app --reload
 ```
 
 Once the app is running, you can access fastapi documentation at http://127.0.0.1:8000 to test the API. Use the test files in the input_test_data folder for testing the API.
