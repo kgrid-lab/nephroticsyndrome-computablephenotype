@@ -16,7 +16,7 @@ uvicorn = "^0.22.0"
 python-multipart = "^0.0.6"
 
 [tool.poetry.scripts]
-my_project = "nephroticsyndrome_computablephenotype.cli:main"
+nephroticsyndrome-computablephenotype = "nephroticsyndrome_computablephenotype.cli:main"
 
 [build-system]
 requires = ["poetry-core"]
