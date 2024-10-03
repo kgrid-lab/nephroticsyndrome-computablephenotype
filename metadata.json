@@ -80,22 +80,3 @@
         "schema:funder": "Patient Centered Outcomes Research Institute"
       }
     }
-
---------------------------
-    ID and add terms for tests, examples, etc and think of how this would show up in metadata for a KO
-
-    also  "purpose",
-    "tests" - https://www.w3.org/TR/test-metadata/
-
-    Which license? Implications for original knowledge?
-
-    Typology for CBK
-
-    Add: ICD-9, PCOR CDM versions
-
-    cutting nested dc for now
-    "dc:creator" : {
-      "foaf:name": "Seifi, Farid",
-      "schema:affiliation": "Knowledge Systems Lab, University of Michigan Medical School",
-      "schema:email": "faridsei@med.umich.edu"
-    },
