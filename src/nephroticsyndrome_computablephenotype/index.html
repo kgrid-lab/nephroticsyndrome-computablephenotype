@@ -60,7 +60,7 @@
         .then(response => response.json())
         .then(async (metadata) => {
             // Use jsonld.js to expand the metadata
-            const expanded = await jsonld.expand('https://raw.githubusercontent.com/kgrid-lab/nephroticsyndrome-computablephenotype/refs/heads/KO-implementation/metadata.json');
+            const expanded = await jsonld.expand(metadata);
             console.log('Expanded Metadata:', expanded[0]);
             const metadataDiv = document.getElementById('metadata');
             metadataDiv.innerHTML = `
