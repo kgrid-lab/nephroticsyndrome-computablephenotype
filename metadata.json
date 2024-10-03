@@ -34,7 +34,7 @@
     "dc:publisher": "Knowledge Systems Lab",
     "dc:type" : "software",
     "dc:license" : "license.md",
-    "dc:bibliographicCitation": "Knowlege Systems Lab. (2024). Nephrotic Syndrome Computable Phenotype Knowledge Object v1.0. Available: https://github.com/kgrid-lab/nephroticsyndrome-computablephenotype.",
+    "dc:bibliographicCitation": "Knowledge Systems Lab. (2024). Nephrotic Syndrome Computable Phenotype Knowledge Object v1.0. Available: https://github.com/kgrid-lab/nephroticsyndrome-computablephenotype.",
     
     "koio:hasService": 
     [
@@ -69,7 +69,7 @@
         "dc:date" : "2018-04-11",
         "schema:creator" : {
           "@type":"Person",
-          "schema:lastname": "Dorn",
+          "schema:familyName": "Dorn",
           "schema:givenName": "Chad",
           "schema:affiliation": "Vanderbilt University Medical Center",
           "schema:email": "chad.a.dorn@vumc.org"
