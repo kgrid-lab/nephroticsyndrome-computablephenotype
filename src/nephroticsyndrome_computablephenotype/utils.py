@@ -1,9 +1,9 @@
 import csv
 import json
 
-from nephroticsyndrome_computablephenotype.icd_codes import All_encounters
+from src.nephroticsyndrome_computablephenotype.icd_codes import All_encounters
 
-from nephroticsyndrome_computablephenotype.datatypes import AdditionalInfo, Diagnosis, Encounter, Patient
+from src.nephroticsyndrome_computablephenotype.datatypes import AdditionalInfo, Diagnosis, Encounter, Patient
 
 def is_json(content):
     try:
