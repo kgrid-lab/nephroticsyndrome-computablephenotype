@@ -157,6 +157,7 @@ call using
 ```zsh
 # pipe input file to the classify command and redirect the processed output to output.json
 cat input_test_data/sample_input.json | classify > output.json
+
 ```
 
 ### Install and run the app from a distribution file
