@@ -56,7 +56,8 @@
     <script src="https://cdn.jsdelivr.net/npm/jsonld@1.5.0/dist/jsonld.min.js"></script>
     <script>
         // Fetch metadata from JSON file and display it on the page
-        fetch('https://raw.githubusercontent.com/kgrid-lab/nephroticsyndrome-computablephenotype/refs/heads/main/metadata.json')
+        //fetch('https://raw.githubusercontent.com/kgrid-lab/nephroticsyndrome-computablephenotype/refs/heads/main/metadata.json') -->
+        fetch('https://raw.githubusercontent.com/kgrid-lab/nephroticsyndrome-computablephenotype/refs/heads/KO-information-page/metadata.json')
         .then(response => response.json())
         .then(async (metadata) => {
             // Use jsonld.js to expand the metadata
@@ -70,13 +71,28 @@
                 <!-- <p><strong>Id:</strong> ${expanded[0]["@id"]}</p> -->
                 <p><strong>Id:</strong> ${metadata["@id"]}</p>
                 <p><strong>Identifier:</strong>  ${metadata["dc:identifier"] }</p>
-
                 <p><strong>Type:</strong> <a href='${expanded[0]["@type"]}'> ${metadata["@type"] }</a></p>
-                <p><strong>Version:</strong>  ${metadata["version"] }</p>
+                <p><strong>Version:</strong>  ${metadata["dc:version"] }</p>
+                <p><strong>Date:</strong>  ${metadata["dc:date"] }</p>
                 <p><strong>KGrid model version:</strong> ${metadata["koio:kgrid"]}</p>
-                <p><strong>Citation:</strong> <a href='${metadata["citation"]}'>${metadata["citation"]}</a></p>
-                <p><strong>Contributors:</strong> ${metadata["koio:contributors"]}</p>
                 <p><strong>Keywords:</strong> ${metadata["koio:keywords"]}</p>
+
+                <h2>Creator Information</h2>
+                <p><strong>Name:</strong> ${metadata["schema:creator"]['schema:givenName']} ${metadata["schema:creator"]['schema:familyName']}</p>
+                <p><strong>Affiliation:</strong> ${metadata["schema:creator"]['schema:affiliation']}</p>
+                <p><strong>Email:</strong> <a href="mailto:${metadata["schema:creator"]['schema:email']}">${metadata["schema:creator"]['schema:email']}</a></p>
+                <p><strong>ORCID:</strong> <a href="${metadata["schema:creator"]['@id']}" target="_blank">${metadata["schema:creator"]['@id']}</a></p>
+                
+                <h2>Contributor Information</h2>
+                <p><strong>Name:</strong> ${metadata["schema:contributor"]['schema:givenName']} ${metadata["schema:contributor"]['schema:familyName']}</p>
+                <p><strong>Affiliation:</strong> ${metadata["schema:contributor"]['schema:affiliation']}</p>
+                <p><strong>Email:</strong> <a href="mailto:${metadata["schema:contributor"]['schema:email']}">${metadata["schema:contributor"]['schema:email']}</a></p>
+                <p><strong>ORCID:</strong> <a href="${metadata["schema:contributor"]['@id']}" target="_blank">${metadata["schema:contributor"]['@id']}</a></p>
+                
+                <h2>Additional Information</h2>
+                <p><strong>Publisher:</strong> ${metadata["koio:publisher"]}</p>
+                <p><strong>License:</strong> ${metadata["dc:license"]}</p>
+                <p><strong>Citation:</strong> ${metadata["dc:bibliographicCitation"]}</p>
 
                 <h2> Services </h2>
             `;
@@ -87,25 +103,27 @@
                 let serviceHTML = `
                     <p><strong>Type:</strong> ${service["@type"].join(', ')}</p>
                     <p><strong>Depends on:</strong> ${service["dependsOn"]}</p>
-                    <p><strong>Implemented by:</strong> ${service["implementedBy"]}</p>
+                    <p><strong>Implemented by:</strong> ${service["implementedBy"]["@id"]} (type: ${service["implementedBy"]["@type"]})</p>
                     <br/>
                 `;
 
                 // Append the service section to the metadataDiv
                 metadataDiv.innerHTML += serviceHTML;
             });
-
-            const knowledge = metadata["koio:hasKnowledge"];
-            let knowledgeHTML = `
-                    <h2> Knowledge </h2>
+            
+            metadataDiv.innerHTML += "<h2> Knowledge </h2>";
+            const knowledges = metadata["koio:hasKnowledge"];
+            knowledges.forEach(knowledge => {
+            let knowledgeHTML = `                    
                     <p><strong>Id:</strong> ${knowledge["@id"]}</p>
                     <p><strong>Type:</strong> ${knowledge["@type"]}</p>
-                    <p><strong>Implemented by:</strong> ${knowledge["implementedBy"].join(', ')}</p>
+                    <p><strong>Implemented by:</strong> ${knowledge["implementedBy"]["@id"]} (type: ${knowledge["implementedBy"]["@type"]})</p>
                     <br/>
                 `;
 
                 // Append the service section to the metadataDiv
                 metadataDiv.innerHTML += knowledgeHTML;
+            });
         })
         .catch(error => console.error('Error fetching metadata:', error));
     </script>
