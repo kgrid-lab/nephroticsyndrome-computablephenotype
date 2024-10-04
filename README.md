@@ -1,5 +1,5 @@
 # Nephrotic syndrome computable phenotype
-
+[Knowledge Object Information Page](https://kgrid-lab.github.io/nephroticsyndrome-computablephenotype/src/nephroticsyndrome_computablephenotype/)
 ## Motivation
 Computable phenotypes are algorithms derived from electronic health record (EHR) data that 
 classify patients based on the presence or absence of diseases, conditions, or clinical features. 

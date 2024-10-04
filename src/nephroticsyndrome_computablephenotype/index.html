@@ -56,8 +56,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jsonld@1.5.0/dist/jsonld.min.js"></script>
     <script>
         // Fetch metadata from JSON file and display it on the page
-        //fetch('https://raw.githubusercontent.com/kgrid-lab/nephroticsyndrome-computablephenotype/refs/heads/main/metadata.json') -->
-        fetch('https://raw.githubusercontent.com/kgrid-lab/nephroticsyndrome-computablephenotype/refs/heads/KO-information-page/metadata.json')
+        fetch('https://raw.githubusercontent.com/kgrid-lab/nephroticsyndrome-computablephenotype/refs/heads/main/metadata.json')
         .then(response => response.json())
         .then(async (metadata) => {
             // Use jsonld.js to expand the metadata
