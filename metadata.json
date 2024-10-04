@@ -14,13 +14,7 @@
   "dc:version": "v1.0",
   "dc:date": "2024-09",
   "dc:description": "An algorithm to screen structured patient data and return inclusion encounters for nephrotic syndrome",
-  "koio:keywords": [
-    "Nephrotic Syndrome",
-    "Computable Phenotype",
-    "Algorithm",
-    "Inclusion Encounters",
-    "Knowledge Object"
-  ],
+
   "schema:creator": {
     "@id": "https://orcid.org/0009-0008-4454-5826",
     "@type": "Person",
