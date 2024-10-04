@@ -43,20 +43,6 @@
         .colab-button:hover {
             background-color: #f79a00; /* Change color on hover */
         }
-
-        .keyword {
-            font-weight: bold;
-            color: #FF5733;
-            background-color: #F0E68C;
-            padding: 2px 4px;
-            border-radius: 3px;
-            transition: color 0.3s ease;
-        }
-
-        .keyword:hover {
-            color: #C70039;
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
@@ -89,22 +75,24 @@
                 <p><strong>Version:</strong>  ${metadata["dc:version"] }</p>
                 <p><strong>Date:</strong>  ${metadata["dc:date"] }</p>
                 <p><strong>KGrid model version:</strong> ${metadata["koio:kgrid"]}</p>
-                <p><strong>Keywords:</strong> ${metadata["koio:keywords"]}</p>
+                <br/>
 
                 <h2>Creator Information</h2>
                 <p><strong>Name:</strong> ${metadata["schema:creator"]['schema:givenName']} ${metadata["schema:creator"]['schema:familyName']}</p>
                 <p><strong>Affiliation:</strong> ${metadata["schema:creator"]['schema:affiliation']}</p>
                 <p><strong>Email:</strong> <a href="mailto:${metadata["schema:creator"]['schema:email']}">${metadata["schema:creator"]['schema:email']}</a></p>
                 <p><strong>ORCID:</strong> <a href="${metadata["schema:creator"]['@id']}" target="_blank">${metadata["schema:creator"]['@id']}</a></p>
-                
+                <br/>
+
                 <h2>Contributor Information</h2>
                 <p><strong>Name:</strong> ${metadata["schema:contributor"]['schema:givenName']} ${metadata["schema:contributor"]['schema:familyName']}</p>
                 <p><strong>Affiliation:</strong> ${metadata["schema:contributor"]['schema:affiliation']}</p>
                 <p><strong>Email:</strong> <a href="mailto:${metadata["schema:contributor"]['schema:email']}">${metadata["schema:contributor"]['schema:email']}</a></p>
                 <p><strong>ORCID:</strong> <a href="${metadata["schema:contributor"]['@id']}" target="_blank">${metadata["schema:contributor"]['@id']}</a></p>
+                <br/>
                 
-                <h2>Additional Information</h2>
-                <p><strong>Publisher:</strong> ${metadata["koio:publisher"]}</p>
+                <h2>Publisher Information</h2>
+                <p><strong>Publisher:</strong> ${metadata["dc:publisher"]}</p>
                 <p><strong>License:</strong> ${metadata["dc:license"]}</p>
                 <p><strong>Citation:</strong> ${metadata["dc:bibliographicCitation"]}</p>
 
@@ -116,7 +104,7 @@
             services.forEach(service => {
                 let serviceHTML = `
                     <p><strong>Type:</strong> ${service["@type"].join(', ')}</p>
-                    <p><strong>Depends on:</strong> ${service["dependsOn"]}</p>
+                    <p><strong>Depends on:</strong><a href="#Knowledge"> ${service["dependsOn"]}</a></p>
                     <p><strong>Implemented by:</strong> ${service["implementedBy"]["@id"]} (type: ${service["implementedBy"]["@type"]})</p>
                     <br/>
                 `;
@@ -125,13 +113,22 @@
                 metadataDiv.innerHTML += serviceHTML;
             });
             
-            metadataDiv.innerHTML += "<h2> Knowledge </h2>";
+            metadataDiv.innerHTML += "<h2 id='Knowledge'> Knowledge </h2>";
             const knowledges = metadata["koio:hasKnowledge"];
             knowledges.forEach(knowledge => {
             let knowledgeHTML = `                    
                     <p><strong>Id:</strong> ${knowledge["@id"]}</p>
                     <p><strong>Type:</strong> ${knowledge["@type"]}</p>
                     <p><strong>Implemented by:</strong> ${knowledge["implementedBy"]["@id"]} (type: ${knowledge["implementedBy"]["@type"]})</p>
+                    <p><strong>Source:</strong><a href='${knowledge["dc:source"]}' target="_blank"> ${knowledge["dc:source"]}</a></p>
+                    <p><strong>Format:</strong> ${knowledge["dc:format"]}</p>
+                    <p><strong>Date:</strong> ${knowledge["dc:date"]}</p>
+                    <h3>Creator Information</h3>
+                    <p><strong>Name:</strong> ${knowledge["schema:creator"]['schema:givenName']} ${knowledge["schema:creator"]['schema:familyName']}</p>
+                    <p><strong>Affiliation:</strong> ${knowledge["schema:creator"]['schema:affiliation']}</p>
+                    <p><strong>Email:</strong> <a href="mailto:${knowledge["schema:creator"]['schema:email']}">${knowledge["schema:creator"]['schema:email']}</a></p>
+                    <p><strong>ORCID:</strong> <a href="${knowledge["schema:creator"]['@id']}" target="_blank">${knowledge["schema:creator"]['@id']}</a></p>
+
                     <br/>
                 `;
 
