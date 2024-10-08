@@ -4,9 +4,9 @@ import argparse
 import json
 import sys
 
-from src.nephroticsyndrome_computablephenotype.datatypes import Patient
-from src.nephroticsyndrome_computablephenotype.utils import is_csv, is_json, prepare_data_from_csv
-from src.nephroticsyndrome_computablephenotype.classification_algorithm import process_patient_list
+from nephroticsyndrome_computablephenotype.datatypes import Patient
+from nephroticsyndrome_computablephenotype.utils import is_csv, is_json, prepare_data_from_csv
+from nephroticsyndrome_computablephenotype.classification_algorithm import process_patient_list
 
 def main():
     parser = argparse.ArgumentParser(description="""**Classify patients and return inclusion encounters:**

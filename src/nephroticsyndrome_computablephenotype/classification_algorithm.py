@@ -1,7 +1,7 @@
-from src.nephroticsyndrome_computablephenotype.icd_codes import Amyloidosis_Encounter, Diabetes1_Encounter, Diabetes2_Encounter, Exclude_Encounter, Lupus_Encounter, NSNOS_Encounter, Neph5820_Encounter, Neph5829_Encounter, Neph5832_Encounter, PrimaryNS_Encounter
+from nephroticsyndrome_computablephenotype.icd_codes import Amyloidosis_Encounter, Diabetes1_Encounter, Diabetes2_Encounter, Exclude_Encounter, Lupus_Encounter, NSNOS_Encounter, Neph5820_Encounter, Neph5829_Encounter, Neph5832_Encounter, PrimaryNS_Encounter
 from datetime import datetime
 
-from src.nephroticsyndrome_computablephenotype.datatypes import AdditionalInfo, Result
+from nephroticsyndrome_computablephenotype.datatypes import AdditionalInfo, Result
 
 def process_patient_list(patientList) -> {}:
     final_result = []
