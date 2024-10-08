@@ -6,7 +6,7 @@ from pydantic import BaseModel
 
 from nephroticsyndrome_computablephenotype.utils import is_csv, is_json, prepare_data_from_csv
 from nephroticsyndrome_computablephenotype.classification_algorithm import process_patient_list
-from .datatypes import  Patient
+from nephroticsyndrome_computablephenotype.datatypes import  Patient
 
 class TextInput(BaseModel):
     text: str
