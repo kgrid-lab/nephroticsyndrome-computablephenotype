@@ -84,7 +84,7 @@
         "schema:email": "chad.a.dorn@vumc.org"
       },
       "dc:description": "An SQL classification algorithm that creates a cohort of patients with primary nephrotic syndrome from structured data modeled on the PCORI Common Data Model",
-      "dc:subject": "https://www-ncbi-nlm-nih-gov/mesh/68009404",
+      "dc:subject": "https://www.ncbi.nlm.nih.gov/mesh/68009404",
       "dc:isReferencedBy": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8986057",
       "schema:funder": "Patient Centered Outcomes Research Institute"
     }
