@@ -1,8 +1,8 @@
 {
   "@context": "https://kgrid.org/koio/2.1/context",
   "@id": "NSCP",
-  "koio:KOIOVersion": "2.1",
-  "@type": "koio:KnowledgeObject",
+  "KOIOVersion": "2.1",
+  "@type": "KnowledgeObject",
   "dc:identifier": "ark:NSCP",
   "dc:version": "v1.0",
   "dc:date": "2024-09",
@@ -26,17 +26,17 @@
   },
   "dc:publisher": "Knowledge Systems Lab",
   "dc:license": {
-      "@id": "license.md"
+    "@id": "license.md"
   },
   "dc:bibliographicCitation": "Knowledge Systems Lab. (2024). Nephrotic Syndrome Computable Phenotype Knowledge Object v1.0. Available: https://github.com/kgrid-lab/nephroticsyndrome-computablephenotype.",
-  "koio:hasKnowledge": [
+  "hasKnowledge": [
     {
       "@id": "NephroticSyndromeCP",
-      "@type": "koio:Knowledge",
+      "@type": "Knowledge",
       "implementedBy": {
         "@id": "classification_algorithm.py",
         "@type": [
-          "koio:Implementation",
+          "Implementation",
           "Function",
           "Python"
         ]
@@ -52,23 +52,23 @@
         "schema:email": "chad.a.dorn@vumc.org"
       },
       "dc:description": "An SQL classification algorithm that creates a cohort of patients with primary nephrotic syndrome from structured data modeled on the PCORI Common Data Model",
-      "dc:subject": "https://www-ncbi-nlm-nih-gov/mesh/68009404",
+      "dc:subject": "https://www.ncbi.nlm.nih.gov/mesh/68009404",
       "dc:isReferencedBy": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8986057",
       "schema:funder": "Patient Centered Outcomes Research Institute"
     }
   ],
-  "koio:hasService": [
+  "hasService": [
     {
       "@id": "CLIService",
       "@type": [
-        "koio:Service",
+        "Service",
         "CLI"
       ],
       "dependsOn": "NephroticSyndromeCP",
       "implementedBy": {
         "@id": "cli.py",
         "@type": [
-          "koio:Implementation",
+          "Implementation",
           "Batch",
           "Python"
         ]
@@ -77,14 +77,14 @@
     {
       "@id": "APIService",
       "@type": [
-        "koio:Service",
+        "Service",
         "API"
       ],
       "dependsOn": "NephroticSyndromeCP",
       "implementedBy": {
         "@id": "api.py",
         "@type": [
-          "koio:Implementation",
+          "Implementation",
           "API",
           "Python"
         ]
