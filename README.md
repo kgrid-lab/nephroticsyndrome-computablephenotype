@@ -120,7 +120,7 @@ poetry install
 #### API service
 Run the API service using 
 ```zsh
-uvicorn src.nephroticsyndrome_computablephenotype.api:app --reload
+uvicorn src.nephroticsyndrome_computablephenotype.api:app
 ```
 
 #### CLI service
@@ -169,7 +169,7 @@ pip install https://github.com/kgrid-lab/nephroticsyndrome-computablephenotype/r
 ```
 Then, run the app using 
 ```zsh
-uvicorn nephroticsyndrome_computablephenotype.api:app --reload
+uvicorn nephroticsyndrome_computablephenotype.api:app
 ```
 
 Once the app is running, you can access fastapi documentation at http://127.0.0.1:8000 to test the API. Use the test files in the input_test_data folder for testing the API.
