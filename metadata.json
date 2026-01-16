@@ -1,5 +1,5 @@
 {
-  "@context": "https://kgrid.org/koio/2.1/context",
+  "@context": "https://kgrid.org/koio/2.1/context.jsonld",
   "@id": "NSCP",
   "KOIOVersion": "2.1",
   "@type": "KnowledgeObject",
@@ -28,7 +28,10 @@
   "dc:license": {
     "@id": "license.md"
   },
-  "dc:bibliographicCitation": "Knowledge Systems Lab. (2024). Nephrotic Syndrome Computable Phenotype Knowledge Object v1.0. Available: https://github.com/kgrid-lab/nephroticsyndrome-computablephenotype.",
+  "dc:isReferencedBy": {
+    "@id":"https://github.com/kgrid-lab/nephroticsyndrome-computablephenotype",
+    "dc:title": "Knowledge Systems Lab. (2024). Nephrotic Syndrome Computable Phenotype Knowledge Object v1.0."
+  },
   "hasKnowledge": [
     {
       "@id": "NephroticSyndromeCP",
@@ -66,7 +69,7 @@
       ],
       "dependsOn": "NephroticSyndromeCP",
       "implementedBy": {
-        "@id": "cli.py",
+        "@id": "src/nephroticsyndrome_computablephenotype/cli.py",
         "@type": [
           "Implementation",
           "Batch",
@@ -82,13 +85,27 @@
       ],
       "dependsOn": "NephroticSyndromeCP",
       "implementedBy": {
-        "@id": "api.py",
+        "@id": "src/nephroticsyndrome_computablephenotype/api.py",
         "@type": [
           "Implementation",
           "API",
           "Python"
         ]
       }
+    }
+  ],
+  "koio:hasDocumentation": [
+    {
+      "@id": "https://colab.research.google.com/drive/1AN4oO3-zEJWU1BUfWqlmQBb5sWN9p5T4?usp=sharing",
+      "@type": "InformationArtifact",
+      "dc:title": "Using Nephrotic Syndrome Computable Phenotype: A Step-by-Step Tutorial",
+      "dc:description": "This Google Colab tutorial demonstrates three different ways to use the nephrotic syndrome computable phenotype object:<ul><li>using the built-in command-line interface (CLI) service</li><li>using the web API service</li><li>using the knowledge object's knowledge representation directly in the code</li></ul>"
+    },
+    {
+      "@id": "README.md",
+      "@type": "InformationArtifact",
+      "dc:title": "README.md",
+      "dc:description": "This document includes the Core knowledge documentation and the guide on how to use this knowledge object."
     }
   ]
 }

@@ -1,0 +1,384 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nephrotic Syndrome Computable Phenotype</title>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            width: 100%;
+        }
+        .left-column {
+            width: 70%;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        /* Right Column */
+        .right-column {
+            width: 30%;
+            background-color: #e9e9e9;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .metadata {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .metadata p {
+            margin: 5px 0;
+        }
+        .doc-section, .test-section {
+            
+            right: 20px;
+            width: 250px;
+            color: black;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 250px;
+            font-size: 16px;
+        }
+        .doc-section {
+            top: 20px;
+            background-color: #97c8ed;
+        }
+        .doc-section h3 {
+            margin-top: 0;
+        }
+        .doc-section a {
+            text-decoration: underline;
+        }
+        .doc-section p {
+            margin-top: 5px;
+        }
+        
+        .test-section {
+            
+            background-color: #96d6b7;
+        }
+        .test-section h3 {
+            margin-top: 0;
+        }
+        
+        .test-section a {
+            text-decoration: underline;
+        }
+        
+        .test-section p {
+            margin-top: 5px;
+        }
+    </style>
+    </head>
+    <body>
+        <div class="container">
+        <div class="left-column">
+            <div class="metadata" id="metadata">
+            <h1>Nephrotic Syndrome Computable Phenotype</h1>
+            <p>An algorithm to screen structured patient data and return inclusion encounters for nephrotic syndrome</p>
+            <p><strong>Id:</strong> <a href="https://github.com/kgrid-lab/nephroticsyndrome-computablephenotype/blob/main" target='_blank'> 
+                NSCP
+            </a></p>
+            <p><strong>Identifier:</strong> ark:NSCP</p>
+            <p><strong>Type:</strong> <a href="https://kgrid.org/koio#KnowledgeObject" target='_blank'>https://kgrid.org/koio#KnowledgeObject</a></p>
+            <p><strong>Version:</strong> v1.0</p>
+            <p><strong>Date:</strong> 2024-09</p>
+            
+            <p><strong>License:</strong> 
+                    <a href="https://github.com/kgrid-lab/nephroticsyndrome-computablephenotype/blob/main/license.md" target='_blank'>
+                        license.md
+                    </a></p>
+            
+            
+            <hr>
+            <h2>Creator</h2>
+            <p><strong>Name:</strong> Farid
+                Seifi </p>
+            <p><strong>Affiliation:</strong> Knowledge Systems Lab, University of Michigan Medical School</p>
+            <p><strong>Email:</strong> 
+                <a href="mailto:faridsei@med.umich.edu" target='_blank'>
+                    faridsei@med.umich.edu
+                </a>
+            </p>
+            <p><strong>Website:</strong> 
+                <a href="https://orcid.org/0009-0008-4454-5826" target='_blank'>
+                    https://orcid.org/0009-0008-4454-5826
+                </a>
+            </p>
+            
+                <h2>Contributor</h2>
+                <p><strong>Name:</strong> Marisa
+                    Conte </p>
+                <p><strong>Affiliation:</strong> Knowledge Systems Lab, University of Michigan Medical School</p>
+                <p><strong>Email:</strong> 
+                    <a href="mailto:meese@umich.edu" target='_blank'>
+                        meese@umich.edu
+                    </a>
+                </p>
+                <p><strong>Website:</strong> 
+                    <a href="https://orcid.org/0000-0001-7377-163X" target='_blank'>
+                        https://orcid.org/0000-0001-7377-163X
+                    </a>
+                </p>
+            
+            
+            
+                <p><h2>Publisher</h2> 
+                    Knowledge Systems Lab
+                </p>
+            
+            
+                              
+            
+                </p><b>Is referenced by:</b></p>
+                   
+                <ul>                 
+                 
+                    <li>     
+                    <a href="https://github.com/kgrid-lab/nephroticsyndrome-computablephenotype" target='_blank'>
+                        Knowledge Systems Lab. (2024). Nephrotic Syndrome Computable Phenotype Knowledge Object v1.0.
+                    </a>
+                    </li>
+                   
+                </ul>
+            
+
+            
+                <hr>
+                <h2>Knowledge</h2>
+                
+                    
+                    
+                    </p>
+                        <p><h3> NephroticSyndromeCP</h3></p>
+                         
+                    
+                    <p><strong>Type:</strong> 
+                            <a href="https://kgrid.org/koio#Knowledge" target='_blank'>
+                                https://kgrid.org/koio#Knowledge
+                            </a>
+                    </p>
+                    
+                        <p><strong>Description:</strong> An SQL classification algorithm that creates a cohort of patients with primary nephrotic syndrome from structured data modeled on the PCORI Common Data Model</p>
+                    
+                    
+                    
+                        <p><strong>Date:</strong> 
+                            2018-04-11
+                        </p>
+                    
+                    
+                    
+                        <b>Creator:</b>
+                           
+                        <ul>                 
+                         
+                            <li>  
+                                <p>
+                                Chad  
+                                </p>
+                                
+                                <p><strong>Affiliation:</strong> 
+                                Vanderbilt University Medical Center 
+                                </p>
+                                
+                                
+                                <p><strong>Email:</strong> 
+                                    <a href="mailto:chad.a.dorn@vumc.org" target='_blank'>
+                                        chad.a.dorn@vumc.org
+                                    </a>
+                                </p>
+                                
+                                
+                           
+                        </ul>
+                    
+                    
+                        <p><strong>Source:</strong> 
+                            <a href="https://github.com/AoliverioUM/nephroticsyndrome-computablephenotype/blob/main/Nephrotic_Syndrome_1_Patients_2018_0411.sql" target='_blank'>
+                                https://github.com/AoliverioUM/nephroticsyndrome-computablephenotype/blob/main/Nephrotic_Syndrome_1_Patients_2018_0411.sql
+                            </a>
+                        </p>
+                                
+                                      
+                    
+                        </p><b>Is referenced by:</b></p>
+                           
+                        <ul>                 
+                         
+                            <li>     
+                            <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8986057" target='_blank'>
+                                https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8986057
+                            </a>
+                            </li>
+                           
+                        </ul>
+                    
+                    
+                                       
+                    
+                        
+                        <p><strong>Implemented by:</strong> 
+                        <ul>
+                        
+                            <li>
+                            <a href="https://github.com/kgrid-lab/nephroticsyndrome-computablephenotype/blob/main/classification_algorithm.py" target='_blank'>
+                                classification_algorithm.py
+                            </a><br/>(type: 
+                                
+                                
+                                  
+                                    
+                                        <a href="https://kgrid.org/koio#Implementation" target='_blank'>
+                                            https://kgrid.org/koio#Implementation
+                                        </a>, 
+                                      
+                                  
+                                    
+                                        <a href="https://w3id.org/function/ontology#Function" target='_blank'>
+                                            https://w3id.org/function/ontology#Function
+                                        </a>, 
+                                      
+                                  
+                                    
+                                        <a href="http://www.ebi.ac.uk/swo/SWO_0000118" target='_blank'>
+                                            http://www.ebi.ac.uk/swo/SWO_0000118
+                                        </a>
+                                      
+                                
+                                
+                                )
+                            </li>
+                        
+                        </ul>
+                        </p>
+                                      
+                                        
+                    
+                    
+                    
+                    <p><strong>Format:</strong> 
+                        application/sql
+                    </p>
+                                       
+                
+            
+
+            
+            <hr>
+            <h2>Services</h2>
+            
+            
+
+                <p><h3> CLIService</h3></p>
+                <p><strong>Type:</strong> 
+                        <a href="https://kgrid.org/koio#Service" target='_blank'>
+                            https://kgrid.org/koio#Service
+                        </a>
+                </p>
+                <p><strong>Depends on:</strong> 
+                
+                
+                    NephroticSyndromeCP
+                
+                
+                </p>
+                 
+                
+                
+                    <p><strong>Implemented by:</strong> 
+                    <ul>
+                        
+                            <li>
+                            
+                                <a href="https://github.com/kgrid-lab/nephroticsyndrome-computablephenotype/blob/main/src/nephroticsyndrome_computablephenotype/cli.py" target='_blank'>
+                                    cli.py
+                                </a>                                 
+                               
+                            </li>
+                              
+                        </ul>            
+                    </p>
+                
+            
+
+                <p><h3> APIService</h3></p>
+                <p><strong>Type:</strong> 
+                        <a href="https://kgrid.org/koio#Service" target='_blank'>
+                            https://kgrid.org/koio#Service
+                        </a>
+                </p>
+                <p><strong>Depends on:</strong> 
+                
+                
+                    NephroticSyndromeCP
+                
+                
+                </p>
+                 
+                
+                
+                    <p><strong>Implemented by:</strong> 
+                    <ul>
+                        
+                            <li>
+                            
+                                <a href="https://github.com/kgrid-lab/nephroticsyndrome-computablephenotype/blob/main/src/nephroticsyndrome_computablephenotype/api.py" target='_blank'>
+                                    api.py
+                                </a>                                 
+                               
+                            </li>
+                              
+                        </ul>            
+                    </p>
+                
+            
+            
+        </div>            
+        </div>
+        <div class="right-column">
+            <div class="doc-section" id="doc-section">
+            
+                <h2>Documentation</h2>
+                
+                    <h3><a href="https://colab.research.google.com/drive/1AN4oO3-zEJWU1BUfWqlmQBb5sWN9p5T4?usp=sharing" target='_blank'>Using Nephrotic Syndrome Computable Phenotype: A Step-by-Step Tutorial</a></h3>
+                    <p>This Google Colab tutorial demonstrates three different ways to use the nephrotic syndrome computable phenotype object:<ul><li>using the built-in command-line interface (CLI) service</li><li>using the web API service</li><li>using the knowledge object's knowledge representation directly in the code</li></ul></p>
+                    
+                        <p><strong>Document of</strong> Nephrotic Syndrome Computable Phenotype (koio#KnowledgeObject) </p>
+                    
+                
+                    <h3><a href="https://github.com/kgrid-lab/nephroticsyndrome-computablephenotype/blob/main/README.md" target='_blank'>README.md</a></h3>
+                    <p>This document includes the Core knowledge documentation and the guide on how to use this knowledge object.</p>
+                    
+                        <p><strong>Document of</strong> Nephrotic Syndrome Computable Phenotype (koio#KnowledgeObject) </p>
+                    
+                
+            
+        </div>
+
+            <div class="test-section" id="test-section">
+            
+                <p>No tests available</p>
+            
+            </div>
+        </div>
+        </div>
+    </body>
+    </html>
+    
